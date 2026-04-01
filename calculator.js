@@ -212,8 +212,7 @@ After completing all TODOs, test your calculator:
   Expected output: Invalid operation. Use: add, subtract, multiply, or divide
 
 */
-
-import { add, subtract, multiply, divide } from "./utils/operations.js";
+import { add, subtract, multiply, divide } from "./utils/operation.js";
 import { parseNumbers, isValidOperation } from "./utils/parser.js";
 import _ from "lodash";
 
@@ -244,38 +243,3 @@ switch (operation) {
 }
 
 console.log(`Result: ${result}`);
-
-export function add(numbers) {
-  return numbers.reduce((sum, num) => sum + num, 0);
-}
-
-export function subtract(numbers) {
-  return numbers.reduce((result, num, index) => {
-    if (index === 0) return num;
-    return result - num;
-  }, 0);
-}
-
-export function multiply(numbers) {
-  return numbers.reduce((result, num) => result * num, 1);
-}
-
-export function divide(numbers) {
-  return numbers.reduce((result, num, index) => {
-    if (index === 0) return num;
-    if (num === 0) return NaN;
-    return result / num;
-  }, 0);
-}
-
-import _ from "lodash";
-
-export function parseNumbers(input) {
-  const numbers = _.map(input, (str) => Number(str));
-  return _.compact(numbers);
-}
-
-export function isValidOperation(operation) {
-  const validOps = ["add", "subtract", "multiply", "divide"];
-  return _.includes(validOps, operation);
-}
