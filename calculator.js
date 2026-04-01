@@ -244,3 +244,26 @@ switch (operation) {
 }
 
 console.log(`Result: ${result}`);
+
+export function add(numbers) {
+  return numbers.reduce((sum, num) => sum + num, 0);
+}
+
+export function subtract(numbers) {
+  return numbers.reduce((result, num, index) => {
+    if (index === 0) return num;
+    return result - num;
+  }, 0);
+}
+
+export function multiply(numbers) {
+  return numbers.reduce((result, num) => result * num, 1);
+}
+
+export function divide(numbers) {
+  return numbers.reduce((result, num, index) => {
+    if (index === 0) return num;
+    if (num === 0) return NaN;
+    return result / num;
+  }, 0);
+}
